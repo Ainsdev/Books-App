@@ -17,20 +17,44 @@ const AddBook = () => {
         links: ['']
     });
     const [step, setStep] = useState<number>(1);
-    //Save data and go to next step
+    //Save data and go to step 2
     const continueClickFirst = (e: { preventDefault: () => void; }, categorie: string, personal: boolean) => {
         e.preventDefault()
         setStep(prev => prev + 1)
         setdata({
+            ...data,
             categorie: categorie,
             personal: personal,
-            name: '',
-            author: '',
-            date: '',
-            description: '',
-            valoration: 0,
-            links: ['']
         })
+    }
+    //Save data and go to step 3(last)
+    const continueClickSecond = (e: { preventDefault: () => void; }, title: string, author: string, autoSearch: boolean) => {
+        e.preventDefault()
+        setStep(prev => prev + 1)
+        if (autoSearch) {
+            console.log("Searching Data")
+        } else {
+            setdata({
+                ...data,
+                name: title,
+                author: author,
+            })
+        }
+    }
+    const continueClickThird = (e: { preventDefault: () => void; }, link: Array<string>, rating: number, readed: boolean) => {
+        e.preventDefault()
+        if (readed) {
+            setdata({
+                ...data,
+                links: link,
+                valoration: rating,
+            })
+        } else {
+            setdata({
+                ...data,
+                links: link
+            })
+        }
     }
     console.log(data)
     //To go to Back step
@@ -47,8 +71,8 @@ const AddBook = () => {
                 <li className={str(3, step)}></li>
             </ul>
             {step == 1 && <AddBookFirst data={continueClickFirst} />}
-            {step == 2 && <AddBookSecond func={continueClickFirst} funcBack={backClick} data={data} />}
-            {step == 3 && <AddBookThird data={continueClickFirst} />}
+            {step == 2 && <AddBookSecond func={continueClickSecond} funcBack={backClick} data={data.categorie} />}
+            {step == 3 && <AddBookThird func={continueClickThird} funcBack={backClick} data={data.categorie} />}
         </section>
     );
 };
