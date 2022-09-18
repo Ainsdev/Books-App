@@ -1,9 +1,11 @@
 import React from 'react';
+import Stats from '../Stats';
 
 const PersonalBooks = () => {
     return (
         <>
-            <h1>Your Books</h1> 
+            <Stats />
+            <h1>Your Books</h1>
         </>
     );
 };

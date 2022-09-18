@@ -16,7 +16,7 @@ function LogoutButton() {
             setSession(false)
         }
     }
-    return (<button onClick={signOut} className='btn btn-outline absolute top-0 right-0 mt-10 mr-10'>Sign Out</button>);
+    return (<button onClick={signOut} className='btn btn-outline absolute top-0 right-0 sm:mt-10 sm:mr-10 mt-5 mr-5'>Sign Out</button>);
 }
 
 export default LogoutButton

@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { supabase } from '../../api/clientSupaBase';
 
 const LoginButton = () => {
@@ -21,7 +21,7 @@ const LoginButton = () => {
     }
     return (
         <>
-            <label htmlFor="my-modal-4" className='btn modal-button btn-accent absolute top-0 right-0 mt-10 mr-10'>Sign In</label>
+            <label htmlFor="my-modal-4" className='btn modal-button btn-accent absolute top-0 right-0 sm:mt-10 sm:mr-10 mt-5 mr-5'>Sign In</label>
             <input type="checkbox" id="my-modal-4" className="modal-toggle" />
             <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">

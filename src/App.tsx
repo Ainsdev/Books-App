@@ -24,10 +24,9 @@ function App() {
         <Theme />
         {!session ? <LoginButton /> : <LogoutButton />}
       </nav>
-      <header className='flex flex-col gap-8 justify-center items-center py-12'>
+      <header className='flex flex-col gap-8 justify-center items-center py-12 mt-10'>
         <h1 className='text-5xl font-bold'>BB Books</h1>
-        <SearchingBook />
-        <Stats />
+        <SearchingBook placeholder='Search a Book…' style="input input-accent" />
       </header>
       <section className='w-1/2 h-max mt-5 text-center flex flex-col items-center'>
         <Home />
