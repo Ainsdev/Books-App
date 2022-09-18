@@ -1,5 +1,5 @@
 import AddToDataBase from "../../helpers/interfaces";
-import SearchingBook from "../Searching";
+import SearchingBook from "../SearchBooks/Searching";
 interface AddBookFirstProps {
     func: Function;
     funcBack: Function;

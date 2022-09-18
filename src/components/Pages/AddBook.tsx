@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AddToDataBase from "../../helpers/interfaces";
-import str from "../../helpers/usefulFunctions";
+import { str } from "../../helpers/usefulFunctions";
 import AddBookFirst from "../AddBooks/AddBookFirst";
 import AddBookSecond from "../AddBooks/AddBookSecond";
 import AddBookThird from "../AddBooks/AddBookThird";
