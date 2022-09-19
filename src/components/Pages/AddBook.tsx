@@ -16,7 +16,9 @@ const AddBook = () => {
         valoration: 0,
         links: ['']
     });
+    //steps
     const [step, setStep] = useState<number>(1);
+
     //Save data and go to step 2
     const continueClickFirst = (e: { preventDefault: () => void; }, categorie: string, personal: boolean) => {
         e.preventDefault()
@@ -27,12 +29,13 @@ const AddBook = () => {
             personal: personal,
         })
     }
-    //Save data and go to step 3(last)
+    //Save data and go to step 3
     const continueClickSecond = (e: { preventDefault: () => void; }, title: string, author: string, autoSearch: boolean) => {
         e.preventDefault()
         setStep(prev => prev + 1)
         if (autoSearch) {
             console.log("Searching Data")
+            //Here the function to search with google books api, passing the setData and data to put all the information of a book
         } else {
             setdata({
                 ...data,
@@ -41,6 +44,7 @@ const AddBook = () => {
             })
         }
     }
+    //Ultimate
     const continueClickThird = (e: { preventDefault: () => void; }, link: Array<string>, rating: number, readed: boolean) => {
         e.preventDefault()
         if (readed) {
@@ -56,7 +60,6 @@ const AddBook = () => {
             })
         }
     }
-    console.log(data)
     //To go to Back step
     const backClick = (e: { preventDefault: () => void; }) => {
         e.preventDefault()

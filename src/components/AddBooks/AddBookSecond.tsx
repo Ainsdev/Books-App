@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddToDataBase from "../../helpers/interfaces";
+import Alert from "../Alert";
 import SearchingBook from "../SearchBooks/Searching";
 interface AddBookFirstProps {
     func: Function;
@@ -8,8 +9,11 @@ interface AddBookFirstProps {
 }
 const AddBookSecond: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => {
     const [fields, setFields] = useState<Array<string | Boolean>>(['', '', true]);
+    //handle errors
+    const [alert, setAlert] = useState<boolean>(false);
     return (
         <form className="m-5 flex flex-col gap-5 justify-center items-center">
+            {alert && <Alert style={"alert-warning"} text={"Error, Fill all the inputs"} />}
             <label className="label">
                 <span className="label-text-alt">Data of your {data}</span>
             </label>
@@ -37,7 +41,14 @@ const AddBookSecond: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) =>
             </div>
             <section className="flex gap-5 mt-5">
                 <button onClick={(event) => funcBack(event)} className="btn btn-primary">Back</button>
-                <button onClick={(event) => func(event,fields[0],fields[1],fields[2])} className="btn btn-primary">Continue</button>
+                <button onClick={(event) => {
+                    event.preventDefault();
+                    if (fields[0] == "" || fields[1] == "") {
+                        setAlert(true)
+                    } else {
+                        func(event, fields[0], fields[1], fields[2])
+                    }
+                }} className="btn btn-primary">Continue</button>
             </section>
         </form >
     );

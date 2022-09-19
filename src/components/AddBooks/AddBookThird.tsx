@@ -27,7 +27,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
             <div className="form-control">
                 <label className="cursor-pointer label">
                     <span className="label-text">You readed?</span>
-                    <input onClick={() => setCheck({ ...check, checked: !check.checked })} type="checkbox" checked={check.checked} className="ml-2 checkbox checkbox-secondary" />
+                    <input onChange={() => setCheck({ ...check, checked: !check.checked })} type="checkbox" checked={check.checked} className="ml-2 checkbox checkbox-secondary" />
                 </label>
             </div>
             {check.checked == true ? <div className="rating">
@@ -76,7 +76,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
             </div>
             <section className="flex gap-5 mt-5">
                 <button onClick={(event) => funcBack(event)} className="btn btn-primary">Back</button>
-                <button onClick={(event) => func(event)} className="btn btn-primary">Continue</button>
+                <button onClick={(event) => func(event)} className="btn btn-primary">Publish</button>
             </section>
         </form >
     );

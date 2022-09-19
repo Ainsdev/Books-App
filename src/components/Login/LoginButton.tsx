@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { supabase } from '../../api/clientSupaBase';
 
-const LoginButton = () => {
+
+interface LoginButtonProps {
+    style: string;
+}
+
+const LoginButton: React.FC<LoginButtonProps> = ({ style }) => {
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
-
+    const ButtonStyle = style + ' btn modal-button btn-accent'
     const handleLogin = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
 
@@ -21,7 +26,7 @@ const LoginButton = () => {
     }
     return (
         <>
-            <label htmlFor="my-modal-4" className='btn modal-button btn-accent absolute top-0 right-0 sm:mt-10 sm:mr-10 mt-5 mr-5'>Sign In</label>
+            <label htmlFor="my-modal-4" className={ButtonStyle}>Sign In</label>
             <input type="checkbox" id="my-modal-4" className="modal-toggle" />
             <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">
@@ -50,3 +55,4 @@ const LoginButton = () => {
 };
 
 export default LoginButton;
+
