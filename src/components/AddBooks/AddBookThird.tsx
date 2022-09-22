@@ -5,7 +5,7 @@ interface AddBookFirstProps {
     funcBack: Function;
     data: string;
 }
-type check = {
+type checks = {
     checked: boolean
     rating: number
     links: Array<string>
@@ -14,7 +14,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
     const action = data == 'Podcast' ? "Listen" : "Read"
 
     const [link, setLink] = useState<string>('');
-    const [check, setCheck] = useState<check>({
+    const [check, setCheck] = useState<checks>({
         checked: false,
         rating: 5,
         links: []
@@ -76,7 +76,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
             </div>
             <section className="flex gap-5 mt-5">
                 <button onClick={(event) => funcBack(event)} className="btn btn-primary">Back</button>
-                <button onClick={(event) => func(event)} className="btn btn-primary">Publish</button>
+                <button onClick={(event) => func(event,check.links,check.rating,check.checked)} className="btn btn-primary">Publish</button>
             </section>
         </form >
     );

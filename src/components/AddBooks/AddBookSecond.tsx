@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AddToDataBase from "../../helpers/interfaces";
 import Alert from "../Alert";
-import SearchingBook from "../SearchBooks/Searching";
 interface AddBookFirstProps {
     func: Function;
     funcBack: Function;
@@ -11,6 +10,7 @@ const AddBookSecond: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) =>
     const [fields, setFields] = useState<Array<string | Boolean>>(['', '', true]);
     //handle errors
     const [alert, setAlert] = useState<boolean>(false);
+
     return (
         <form className="m-5 flex flex-col gap-5 justify-center items-center">
             {alert && <Alert style={"alert-warning"} text={"Error, Fill all the inputs"} />}
@@ -29,18 +29,18 @@ const AddBookSecond: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) =>
                 </label>
                 <input onChange={(e) => setFields([
                     fields[0], e.target.value, fields[2]
-                ])} type="text" placeholder="Shakespiere..." className="input input-bordered w-full input-group-lg" />
+                ])} type="text" placeholder="Shakespeare..." className="input input-bordered w-full input-group-lg" />
             </div>
             <div className="form-control">
                 <label className="cursor-pointer label">
-                    <span className="label-text">Auto Fill data</span>
-                    <input onClick={() => setFields([
+                    <span className="label-text">Fill other data</span>
+                    <input onChange={() => setFields([
                         fields[0], fields[1], !fields[2]
-                    ])} type="checkbox" checked={fields[3] as boolean} className="ml-2 checkbox checkbox-secondary" />
+                    ])} type="checkbox" checked={fields[2] as boolean} className="ml-2 checkbox checkbox-secondary" />
                 </label>
             </div>
             <section className="flex gap-5 mt-5">
-                <button onClick={(event) => funcBack(event)} className="btn btn-primary">Back</button>
+                <button onClick={(event) => funcBack(event)} className="btn btn-secondary">Back</button>
                 <button onClick={(event) => {
                     event.preventDefault();
                     if (fields[0] == "" || fields[1] == "") {
