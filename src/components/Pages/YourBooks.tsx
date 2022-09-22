@@ -1,12 +1,23 @@
 import React from 'react';
+import PersonalCard from '../PersonalBooks/PersonalCard';
 import Stats from '../Stats';
 
 const PersonalBooks = () => {
+    //Validation of session active and then show the page, if session is false return login button
     return (
-        <>
+        <section>
             <Stats />
-            <h1>Your Books</h1>
-        </>
+            <article className='flex flex-wrap w-screen h-full px-10 py-5'>
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+                <PersonalCard />
+            </article>
+        </section>
     );
 };
 

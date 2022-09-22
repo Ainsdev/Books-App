@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.6",
+    "axios": "^0.27.2",
     "daisyui": "^2.27.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -17,6 +18,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",
     "sort-by": "^0.0.2",
+    "sweetalert2": "^11.4.33",
+    "sweetalert2-react-content": "^5.0.3",
     "web3.storage": "^4.4.0"
   },
   "devDependencies": {
