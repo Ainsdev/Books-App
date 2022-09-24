@@ -22,7 +22,7 @@ const Home = () => {
                 <a onClick={() => goHome(1)} className={"tab" + str(1)}>BB Books</a>
                 <a onClick={() => goHome(2)} className={"tab" + str(2)}>Personal List</a>
             </div>
-            <article className="h-96 w-scree px-14 py-10">
+            <article className="h-96 w-screen py-10">
                 {home == 0 && <AddBook />}
                 {home == 1 && <Books />}
                 {home == 2 && <PersonalBooks />}

@@ -20,7 +20,7 @@ function App() {
   // }, []);
   // console.log(session)
   return (
-    <main className='w-[100%] flex items-center justify-center flex-col overflow mt-0 p-0 scroll-mt-0' >
+    <main className='w-full flex items-center justify-center flex-col overflow mt-0 p-0 scroll-mt-0' >
       <nav className='mt-0 p-0'>
         <Theme />
         <LoginButton style='absolute top-0 right-0 sm:mt-10 sm:mr-10 mt-5 mr-5' />

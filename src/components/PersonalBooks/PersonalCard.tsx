@@ -2,7 +2,7 @@ import React from 'react';
 
 const PersonalCard = () => {
     return (
-        <div className="card card-side bg-neutral p-0 text-center m-5 xl:w-1/6 xl:h-full h-56 w-screen">
+        <div className="card card-side bg-neutral p-0 text-center m-5 xl:w-1/6 xl:h-full h-56 w-full">
             <figure><img className="h-full" src="https://img1.od-cdn.com/ImageType-100/5835-1/%7B1826793D-98B7-4CB3-B503-6F32034047AA%7DImg100.jpg" alt="Image" /></figure>
             <div className="card-body flex justify-start items-center">
                 <label className="label cursor-pointer">

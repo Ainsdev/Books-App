@@ -40,7 +40,7 @@ const AddBookSecond: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) =>
                 </label>
             </div>
             <section className="flex gap-5 mt-5">
-                <button onClick={(event) => funcBack(event)} className="btn btn-secondary">Back</button>
+                <button onClick={(event) => funcBack(event)} className="btn btn-outline">Back</button>
                 <button onClick={(event) => {
                     event.preventDefault();
                     if (fields[0] == "" || fields[1] == "") {
