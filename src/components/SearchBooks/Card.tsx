@@ -4,12 +4,14 @@ import { SearchedBook } from '../../helpers/interfaces';
 // }
 export default function Card(props: SearchedBook) {
     return (
-        <div className="card card-side bg-neutral p-0 text-center m-5 lg:w-1/6 h-52 w-full">
-            <figure><img className="h-full" src={props.thumbnail} alt="Image" loading='lazy' /></figure>
-            <div className="card-body flex justify-start items-center">
-                <h2 className="card-title text-lg ">{props.name}</h2>
-                <p className="text-md">Author</p>
-                <div className="card-actions justify-center">
+        <div className="card card-side bg-neutral p-0 text-justify m-5 w-3/4 lg:w-1/5 h-52">
+            <figure><img className="h-full w-full 2xl:w-32" src={props.thumbnail} alt="Image" loading='lazy' /></figure>
+            <div className="card-body w-3/4">
+                <div className=' w-full text-justify  text-ellipsis overflow-hidden ' >
+                    <h2 className="align-top text-sm lg:text-lg font-bold ">{props.name}</h2>
+                </div>
+                <p>{props.author}</p>
+                <div className="card-actions flex">
                     <Modal type={props.type}
                         categorie={props.categorie}
                         name={props.name}
@@ -20,6 +22,7 @@ export default function Card(props: SearchedBook) {
                         valoration={props.valoration}
                         pages={props.pages}
                     />
+                    <button className='btn btn-sm btn-outline'>Add</button>
                 </div>
             </div>
         </div>
