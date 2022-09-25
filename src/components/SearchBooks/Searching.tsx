@@ -10,7 +10,7 @@ const SearchingBook = () => {
     const apiKey = 'AIzaSyBW6XdvTAhBeV7HjxBedAMttoguo-d6WBk'
     const fetchData = async (title: string) => {
         let finalTitle = title.toLowerCase().split(" ").join("%20");
-        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}&key=${apiKey}&maxResults=24`;
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${finalTitle}&key=${apiKey}&maxResults=24`;
         await axios.get(apiUrl).then((res) => {
             setData(res.data.items)
         })
@@ -36,18 +36,35 @@ const SearchingBook = () => {
                     <div className="carousel-item h-max w-full flex flex-col lg:flex-row flex-wrap justify-center items-center">
                         {
                             data !== null ? data.map((item: any) => {
-                                return <Card
-                                    key={item.id}
-                                    type={"book"}
-                                    categorie={'item.volumeInfo.categories[0]'}
-                                    name={item.volumeInfo.title}
-                                    author={item.volumeInfo.authors}
-                                    thumbnail={'https://img1.od-cdn.com/ImageType-100/5835-1/%7B1826793D-98B7-4CB3-B503-6F32034047AA%7DImg100.jpg'}
-                                    date={item.volumeInfo.publishedDate}
-                                    description={item.volumeInfo.description}
-                                    valoration={item.volumeInfo.averageRating}
-                                    pages={item.volumeInfo.pageCount}
-                                />
+                                try {
+                                    return <Card
+                                        id={item.id}
+                                        key={item.id}
+                                        type={"book"}
+                                        categorie={item.volumeInfo.categories}
+                                        name={item.volumeInfo.title}
+                                        author={item.volumeInfo.authors}
+                                        image={item.volumeInfo.imageLinks.thumbnail}
+                                        date={item.volumeInfo.publishedDate}
+                                        description={item.volumeInfo.description}
+                                        valoration={item.volumeInfo.averageRating}
+                                        pages={item.volumeInfo.pageCount}
+                                    />
+                                } catch (error) {
+                                    return <Card
+                                        id={item.id}
+                                        key={item.id}
+                                        type={"book"}
+                                        categorie={item.volumeInfo.categories}
+                                        name={item.volumeInfo.title}
+                                        author={item.volumeInfo.authors}
+                                        image={""}
+                                        date={item.volumeInfo.publishedDate}
+                                        description={item.volumeInfo.description}
+                                        valoration={item.volumeInfo.averageRating}
+                                        pages={item.volumeInfo.pageCount}
+                                    />
+                                }
                             }) : <h1 className="text-2xl text-center">No results</h1>
                         }
                     </div>

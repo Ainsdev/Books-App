@@ -5,18 +5,21 @@ import { SearchedBook } from '../../helpers/interfaces';
 export default function Card(props: SearchedBook) {
     return (
         <div className="card card-side bg-neutral p-0 text-justify m-5 w-3/4 lg:w-1/5 h-52">
-            <figure><img className="h-full w-full 2xl:w-32" src={props.thumbnail} alt="Image" loading='lazy' /></figure>
+            <figure><img className="h-full w-full 2xl:w-32" src={props.image} alt="Image" loading='lazy' /></figure>
             <div className="card-body w-3/4">
                 <div className=' w-full text-justify  text-ellipsis overflow-hidden ' >
                     <h2 className="align-top text-sm lg:text-lg font-bold ">{props.name}</h2>
                 </div>
                 <p>{props.author}</p>
                 <div className="card-actions flex">
-                    <Modal type={props.type}
+                    <Modal
+                        id={props.id}
+                        key={props.id}
+                        type={props.type}
                         categorie={props.categorie}
                         name={props.name}
                         author={props.author}
-                        thumbnail={props.thumbnail}
+                        image={props.image}
                         date={props.date}
                         description={props.description}
                         valoration={props.valoration}
@@ -35,12 +38,13 @@ const Modal = (data: SearchedBook) => {
     }
     return (
         <>
-            <label htmlFor="my-modal-3" className="btn btn-sm btn-primary">See More</label>
-            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-            <div className="modal">
+            <label htmlFor={'my-modal-' + data.id} className="btn btn-sm btn-primary">See More</label>
+            <input type="checkbox" id={'my-modal-' + data.id} className="modal-toggle" />
+
+            <label htmlFor={'my-modal-' + data.id} className="modal cursor-pointer">F
                 <div className="modal-box relative z-40 w-72 sm:w-full text-center">
-                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2 ">✕</label>
-                    <figure><img className="h-full rounded-xl" src={data.thumbnail} alt="Shoes" loading='lazy' /></figure>
+                    {/* <label htmlFor={'my-modal-' + data.id} className="btn btn-sm btn-circle absolute right-2 top-2 ">✕</label> */}
+                    <div className='flex justify-center items-center'><img className="rounded-xl h-96" src={data.image} alt="Image not found" loading='lazy' /></div>
                     <h3 className="text-xl font-bold pt-5">Title: {data.name}</h3>
                     <h3 className="text-lg font-semibold pt-5">Author: {data.author}</h3>
                     <div className="divider"></div>
@@ -59,8 +63,11 @@ const Modal = (data: SearchedBook) => {
                             <p className='text-lg font-medium'>{data.description}</p>
                         </div>
                     </div>
+
                 </div>
-            </div>
+            </label>
+
+
         </>
     );
 };

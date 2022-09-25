@@ -6,7 +6,6 @@ import AddBookSecond from "../AddBooks/AddBookSecond";
 import AddBookThird from "../AddBooks/AddBookThird";
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 const AddBook = () => {
     const [data, setdata] = useState<AddToDataBase>({
@@ -56,20 +55,19 @@ const AddBook = () => {
                     links: ['']
 
                 })
-                console.log(data)
+                setStep(prev => prev + 1)
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'We didnt find any book with that title and author',
-                    footer: 'Try again with other'
+                    footer: 'Try again with other title'
                 })
             })
         }
         if (autoSearch == true) {
             console.log("Searching Data")
             fetchData()
-            setStep(prev => prev + 1)
         } else {
             console.log("Not Searching Data")
             setdata({
