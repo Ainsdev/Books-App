@@ -7,10 +7,12 @@ import PageSearch from "./PageSearch";
 const SearchingBook = () => {
     const [searching, setSearching] = useState<[boolean, string]>([false, '']);
     const [data, setData] = useState<Array<any> | null>(null);
+    const [author, setAuthor] = useState<boolean>(false);
     const apiKey = 'AIzaSyBW6XdvTAhBeV7HjxBedAMttoguo-d6WBk'
     const fetchData = async (title: string) => {
         let finalTitle = title.toLowerCase().split(" ").join("%20");
-        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${finalTitle}&key=${apiKey}&maxResults=24`;
+        let searchType = author ? 'inauthor' : 'intitle';
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchType}:${finalTitle}&key=${apiKey}&maxResults=24`;
         await axios.get(apiUrl).then((res) => {
             setData(res.data.items)
         })
@@ -24,6 +26,12 @@ const SearchingBook = () => {
     return (
         <section className="flex relative flex-col justify-center items-center gap-3 w-screen overflow-hidden">
             <div className="form-control flex ">
+                <label className="label">
+                    <label className="label cursor-pointer">
+                        <span className="label-text pr-2">Search by Author</span>
+                        <input type="checkbox" className="toggle" onClick={()=>setAuthor(!author)} checked={author}/>
+                    </label>
+                </label>
                 <div className="input-group">
                     <input value={searching[1]} onChange={(e) => setSearching(prev => [false, e.target.value])} type="text" placeholder="Search a title..." className="input input-accent sm:w-96" />
                     <button onClick={(e) => handleSearching(e)} className="btn btn-square">
