@@ -6,7 +6,6 @@ import AddBookSecond from "../AddBooks/AddBookSecond";
 import AddBookThird from "../AddBooks/AddBookThird";
 import axios from 'axios';
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
 
 const AddBook = () => {
     const [data, setdata] = useState<AddToDataBase>({
@@ -40,8 +39,8 @@ const AddBook = () => {
         e.preventDefault()
         let finalAuthor = author.toLowerCase().split(" ").join("%20");
         let finalTitle = title.toLowerCase().split(" ").join("%20");
-        const apiKey = 'AIzaSyBW6XdvTAhBeV7HjxBedAMttoguo-d6WBk';
-        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${finalTitle}+inauthor:${finalAuthor}&key=${apiKey}&maxrespults=3`;
+        const apiKey = import.meta.env.VITE_APP_GOOGLE_API_KEY;
+        const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${finalTitle}+inauthor:${finalAuthor}&key=${apiKey}&maxresults=3`;
         async function fetchData() {
             await axios.get(apiUrl).then((res) => {
                 setdata({
@@ -56,20 +55,19 @@ const AddBook = () => {
                     links: ['']
 
                 })
-                console.log(data)
+                setStep(prev => prev + 1)
             }).catch((err) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'We didnt find any book with that title and author',
-                    footer: 'Try again with other'
+                    footer: 'Try again with other title'
                 })
             })
         }
         if (autoSearch == true) {
             console.log("Searching Data")
             fetchData()
-            setStep(prev => prev + 1)
         } else {
             console.log("Not Searching Data")
             setdata({

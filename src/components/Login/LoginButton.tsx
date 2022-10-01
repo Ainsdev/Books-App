@@ -13,15 +13,15 @@ const LoginButton: React.FC<LoginButtonProps> = ({ style }) => {
     const handleLogin = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
 
-        // try {
-        //     setLoading(1)
-        //     const { error } = await supabase.auth.signIn({ email })
-        //     if (error) throw error
-        // } catch (error: any) {
-        //     alert(error.error_description || error.message)
-        // } finally {
-        //     setLoading(2)
-        // }
+        try {
+            setLoading(1)
+            const { error } = await supabase.auth.signIn({ email })
+            if (error) throw error
+        } catch (error: any) {
+            alert('error al iniciar seesion')
+        } finally {
+            setLoading(2)
+        }
     }
     return (
         <>
@@ -33,7 +33,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({ style }) => {
                     {loading != 0 ? (
                         loading == 1 ? <h1 className='text-xl'>Sending magic link...</h1> : <h1 className='text-xl'>Check your email in <a className='link' href='https://mail.google.com/mail/u/0/#inbox'>Go to mail</a></h1>
                     ) : (
-                        <form onSubmit={() => alert('login')} className="flex flex-col gap-5 items-center ">
+                        <form onSubmit={(e) => handleLogin(e)} className="flex flex-col gap-5 items-center ">
                             <input
                                 id="email"
                                 className="input input-bordered text-center w-full"

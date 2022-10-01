@@ -75,7 +75,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
                 </ul>
             </div>
             <section className="flex gap-5 mt-5">
-                <button onClick={(event) => funcBack(event)} className="btn btn-primary">Back</button>
+                <button onClick={(event) => funcBack(event)} className="btn btn-outline">Back</button>
                 <button onClick={(event) => func(event,check.links,check.rating,check.checked)} className="btn btn-primary">Publish</button>
             </section>
         </form >

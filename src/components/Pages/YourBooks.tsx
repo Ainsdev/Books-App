@@ -7,7 +7,7 @@ const PersonalBooks = () => {
     return (
         <section>
             <Stats />
-            <article className='flex flex-wrap w-screen h-full px-10 py-5'>
+            <article className='flex flex-wrap w-full h-full px-10 py-5'>
                 <PersonalCard />
                 <PersonalCard />
                 <PersonalCard />
