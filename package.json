@@ -20,6 +20,7 @@
     "sort-by": "^0.0.2",
     "sweetalert2": "^11.4.33",
     "sweetalert2-react-content": "^5.0.3",
+    "theme-change": "^2.2.0",
     "web3.storage": "^4.4.0"
   },
   "devDependencies": {

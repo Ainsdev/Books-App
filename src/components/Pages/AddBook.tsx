@@ -39,7 +39,7 @@ const AddBook = () => {
         e.preventDefault()
         let finalAuthor = author.toLowerCase().split(" ").join("%20");
         let finalTitle = title.toLowerCase().split(" ").join("%20");
-        const apiKey = 'AIzaSyBW6XdvTAhBeV7HjxBedAMttoguo-d6WBk';
+        const apiKey = import.meta.env.VITE_APP_GOOGLE_API_KEY;
         const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=intitle:${finalTitle}+inauthor:${finalAuthor}&key=${apiKey}&maxresults=3`;
         async function fetchData() {
             await axios.get(apiUrl).then((res) => {

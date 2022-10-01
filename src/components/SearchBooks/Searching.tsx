@@ -28,8 +28,8 @@ const SearchingBook = () => {
             <div className="form-control flex ">
                 <label className="label">
                     <label className="label cursor-pointer">
-                        <span className="label-text pr-2">Search by Author</span>
-                        <input type="checkbox" className="toggle" onClick={()=>setAuthor(!author)} checked={author}/>
+                        <span className="label-text text-xs pr-2">Search by Author</span>
+                        <input type="checkbox" className="toggle " onClick={()=>setAuthor(!author)} checked={author}/>
                     </label>
                 </label>
                 <div className="input-group">
