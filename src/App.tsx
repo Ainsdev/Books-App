@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState, createContext } from 'react'
 import './App.css'
-import Card from './components/SearchBooks/Card'
 import SearchingBook from './components/SearchBooks/Searching'
 import Theme from './components/Theme'
-import Stats from './components/Stats'
 import Home from './components/Home';
 import LoginButton from './components/Login/LoginButton'
 import { supabase } from './api/clientSupaBase'
 import LogoutButton from './components/Login/LogoutButton'
+import React from 'react'
 
-
+interface ctx {
+  session: boolean
+}
+export const AppCtx = createContext<ctx | null>(null);
 function App() {
   const [session, setSession] = useState<boolean>(true);
   useEffect(() => {
     if (supabase.auth.user()) {
       setSession(true)
-    } else{
+      console.log(supabase.auth.user())
+    } else {
       setSession(false)
     }
   }, []);
@@ -31,7 +33,9 @@ function App() {
         <SearchingBook />
       </header>
       <section className='w-1/2 h-max mt-5 text-center flex flex-col items-center'>
-        <Home />
+        <AppCtx.Provider value={{ session: session }}>
+          <Home />
+        </AppCtx.Provider>
       </section>
     </main>
   )

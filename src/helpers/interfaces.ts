@@ -6,6 +6,7 @@ interface AddToDataBase {
     author: string
     image?: string
     date?: string
+    readed: boolean
     description?: string
     valoration?: number
     links?: Array<string>
