@@ -21,9 +21,10 @@ export default async function sendPersonalBooks(params: AddToDataBase) {
                     date: params.date,
                 },
             ])
-        console.log('Completed', data, error)
+        
+        window.location.reload()
     } catch (error) {
-        console.log(error)
+        
     }
 }
 export async function sendBooks(params: AddToDataBase) {
@@ -45,8 +46,9 @@ export async function sendBooks(params: AddToDataBase) {
                     links: params.links,
                 },
             ])
-        console.log('Completed', data, error)
+        
+        window.location.reload()
     } catch (error) {
-        console.log(error)
+        
     }
 }

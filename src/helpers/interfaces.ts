@@ -25,6 +25,16 @@ export interface SearchedBook {
     valoration: number
     pages: number
 }
-export interface SearchedByApi {
-
+export interface PersonalCardProps {
+    id?:string
+    type: string
+    category: string
+    title: string
+    author: string
+    image?: string
+    read: boolean
+    description?: string
+    valoration: number
+    links: Array<string>
 }
+

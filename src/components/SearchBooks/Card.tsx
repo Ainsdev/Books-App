@@ -4,7 +4,7 @@ import { SearchedBook } from '../../helpers/interfaces';
 // }
 export default function Card(props: SearchedBook) {
     return (
-        <div className="card card-side bg-neutral p-0 text-justify m-5 w-3/4 lg:w-1/5 h-52 text-white">
+        <div className="card card-side bg-neutral p-0 text-justify m-5 w-3/4 lg:w-1/5 h-52 text-white" key={props.id}>
             <figure><img className="h-full w-full 2xl:w-32" src={props.image} alt="Image" loading='lazy' /></figure>
             <div className="card-body w-3/4">
                 <div className=' w-full text-justify  text-ellipsis overflow-hidden ' >
@@ -41,7 +41,7 @@ const Modal = (data: SearchedBook) => {
             <label htmlFor={'my-modal-' + data.id} className="btn btn-sm btn-primary">See More</label>
             <input type="checkbox" id={'my-modal-' + data.id} className="modal-toggle" />
 
-            <label htmlFor={'my-modal-' + data.id} className="modal cursor-pointer">F
+            <label htmlFor={'my-modal-' + data.id} className="modal cursor-pointer">
                 <div className="modal-box relative z-40 w-72 sm:w-full text-center bg-neutral-focus">
                     {/* <label htmlFor={'my-modal-' + data.id} className="btn btn-sm btn-circle absolute right-2 top-2 ">✕</label> */}
                     <div className='flex justify-center items-center'><img className="rounded-xl h-96" src={data.image} alt="Image not found" loading='lazy' /></div>

@@ -6,18 +6,20 @@ import Home from './components/Home';
 import LoginButton from './components/Login/LoginButton'
 import { supabase } from './api/clientSupaBase'
 import LogoutButton from './components/Login/LogoutButton'
-import React from 'react'
+import { User } from '@supabase/supabase-js';
 
 interface ctx {
   session: boolean
+  dataSession: object | null
 }
 export const AppCtx = createContext<ctx | null>(null);
 function App() {
   const [session, setSession] = useState<boolean>(true);
+  const [dataSession, setDataSession] = useState<User | null>(null);
   useEffect(() => {
     if (supabase.auth.user()) {
       setSession(true)
-      console.log(supabase.auth.user())
+      setDataSession(supabase.auth.user())
     } else {
       setSession(false)
     }
@@ -33,7 +35,7 @@ function App() {
         <SearchingBook />
       </header>
       <section className='w-1/2 h-max mt-5 text-center flex flex-col items-center'>
-        <AppCtx.Provider value={{ session: session }}>
+        <AppCtx.Provider value={{ session: session, dataSession: dataSession }}>
           <Home />
         </AppCtx.Provider>
       </section>

@@ -74,10 +74,10 @@ const AddBook = () => {
         }
         //if autoSearch is true, do the api call
         if (autoSearch == true) {
-            console.log("Searching Data")
+            
             fetchData()
         } else {
-            console.log("Not Searching Data")
+            
             setdata({
                 ...data,
                 name: title,
@@ -96,7 +96,7 @@ const AddBook = () => {
                 valoration: rating,
                 readed: true,
             })
-            console.log(data)
+            
             //api call
             if (data.personal) {
                 sendPersonalBooks(data)
@@ -109,7 +109,7 @@ const AddBook = () => {
                 links: link,
                 readed: false,
             })
-            console.log(data)
+           
             if (data.personal) {
                 sendPersonalBooks(data)
             } else {
