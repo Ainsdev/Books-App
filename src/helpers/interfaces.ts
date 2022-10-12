@@ -8,7 +8,7 @@ interface AddToDataBase {
     date?: string
     readed: boolean
     description?: string
-    valoration?: number
+    valoration: number
     links?: Array<string>
     //Date of creation and USER
 }

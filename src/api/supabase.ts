@@ -15,12 +15,12 @@ async function importSbDataById(id: string) {
     return error != null ? error : data;
 }
 
-async function updateSbData(id:string,read:boolean,book:string) {
-    const { data, error } = await supabase
-        .from("Personal Books")
-        .update({ read: read })
-        .match({ user: id, title: book });
-    return error != null ? error : data;
-}
+// async function updateSbData(id:string,read:boolean,book:string) {
+//     const { data, error } = await supabase
+//         .from("Personal Books")
+//         .update({ read: read })
+//         .match({ user: id, title: book });
+//     return error != null ? error : data;
+// }
 
-export { ImportSbData, importSbDataById, updateSbData };
+export { ImportSbData, importSbDataById };

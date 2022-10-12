@@ -1,5 +1,4 @@
 import { useEffect, useState, createContext } from 'react'
-import './App.css'
 import SearchingBook from './components/SearchBooks/Searching'
 import Theme from './components/Theme'
 import Home from './components/Home';

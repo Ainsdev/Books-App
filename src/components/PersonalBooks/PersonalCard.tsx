@@ -1,24 +1,12 @@
 import React, { FC, useState } from 'react';
 import Swal from 'sweetalert2';
-import { updateSbData } from '../../api/supabase';
+// import { updateSbData } from '../../api/supabase';
 import { PersonalCardProps } from '../../helpers/interfaces';
 
 const PersonalCard: FC<PersonalCardProps> = (props) => {
     const [readed, setReaded] = useState<boolean>(props.read);
     const handleReaded = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.stopPropagation();
-        updateSbData(props.id, !readed, props.title).then(() => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Updated',
-            }).catch((err) => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: err.message,
-                });
-            })
-        });
         setReaded(!readed);
     }
     const handleAlert = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -36,7 +24,7 @@ const PersonalCard: FC<PersonalCardProps> = (props) => {
                     image: 'rounded-lg',
                     popup: 'bg-base-200',
                     confirmButton: 'btn btn-primary',
-                    htmlContainer: 'text-base-content text-primary',
+                    htmlContainer: 'text-base-content ',
                     footer: 'flex flex-col justify-center items-center'
                 },
                 html:
@@ -47,6 +35,12 @@ const PersonalCard: FC<PersonalCardProps> = (props) => {
                 footer: `<b>${props.category}</b>` + '<br />' + `<p>${props.description?.substring(0, 200)}...</p>`,
                 showCloseButton: true,
                 focusConfirm: false,
+                preConfirm: () => {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'We are working on this...',
+                    })
+                },
                 confirmButtonText:
                     `<i class="fa fa-thumbs-up"></i>Edit Valoration: ${props.valoration}/5`,
                 confirmButtonAriaLabel: 'Thumbs up, great!',
@@ -66,7 +60,7 @@ const PersonalCard: FC<PersonalCardProps> = (props) => {
                 <p className="text-sm font-medium whitespace-nowrap">{props.author}</p>
                 <div className="card-actions justify-center">
                     <div className='flex gap-2 pt-2 indicator'>
-                        <span className="badge badge-outline text-primary">{props.valoration}/5</span>
+                        <span className="badge badge-outline text-primary">{props.valoration == null ? 5 : props.valoration}/5</span>
                     </div>
                 </div>
             </div>

@@ -87,13 +87,13 @@ const AddBook = () => {
         }
     }
     //Ultimate sending data to the database
-    const continueClickThird = (e: { preventDefault: () => void; }, link: Array<string>, rating: number, readed: boolean) => {
+    const continueClickThird = (e: { preventDefault: () => void; }, link: Array<string>, valoration: number, readed: boolean) => {
         e.preventDefault()
         if (readed) {
             setdata({
                 ...data,
                 links: link,
-                valoration: rating,
+                valoration: valoration,
                 readed: true,
             })
             
