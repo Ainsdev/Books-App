@@ -1,15 +1,37 @@
-import React from 'react';
+import { PostgrestError } from '@supabase/supabase-js';
+import { useEffect, useState } from 'react';
+import { ImportSbData } from '../../api/supabase';
+
 import PageSearch from '../SearchBooks/PageSearch';
 
 const Books = () => {
-    //Aca pasariamos la data de supabase cargada a mi email
+    const [dataBook, setDataBook] = useState<any[] | PostgrestError>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    useEffect(() => {
+        ImportSbData().then((data) => {
+            setDataBook(data);
+            setLoading(false);
+        }).catch((err) => {
+            setDataBook(err);
+            setLoading(false);
+        })
+
+    }, []);
+
     return (
-        <div className="h-max carousel carousel-vertical w-full">
-            <PageSearch></PageSearch>
-            <PageSearch></PageSearch>
-            <PageSearch></PageSearch>
-            <PageSearch></PageSearch>
-        </div>
+        <>
+            {
+                loading ?
+                    <button className="btn loading"></button> :
+                    <div className="h-max carousel carousel-vertical w-full">
+                        {
+                            dataBook.code != null ?
+                                <h1>Error: {dataBook.code}</h1> :
+                                <PageSearch data={dataBook} />
+                        }
+                    </div>
+            }
+        </>
     );
 };
 

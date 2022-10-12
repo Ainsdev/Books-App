@@ -6,8 +6,9 @@ interface AddToDataBase {
     author: string
     image?: string
     date?: string
+    readed: boolean
     description?: string
-    valoration?: number
+    valoration: number
     links?: Array<string>
     //Date of creation and USER
 }
@@ -24,6 +25,16 @@ export interface SearchedBook {
     valoration: number
     pages: number
 }
-export interface SearchedByApi {
-
+export interface PersonalCardProps {
+    id?:string
+    type: string
+    category: string
+    title: string
+    author: string
+    image?: string
+    read: boolean
+    description?: string
+    valoration: number
+    links: Array<string>
 }
+

@@ -7,7 +7,7 @@ interface AddBookFirstProps {
 }
 type checks = {
     checked: boolean
-    rating: number
+    valoration: number
     links: Array<string>
 }
 const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => {
@@ -16,9 +16,10 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
     const [link, setLink] = useState<string>('');
     const [check, setCheck] = useState<checks>({
         checked: false,
-        rating: 5,
+        valoration: 5,
         links: []
     });
+    console.log(check.valoration)
     return (
         <form className="m-5 flex flex-col gap-5 justify-center items-center">
             <label className="label">
@@ -33,24 +34,24 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
             {check.checked == true ? <div className="rating">
                 <input onChange={(e) => {
                     e.preventDefault();
-                    setCheck({ ...check, rating: 1 })
+                    setCheck({ ...check, valoration: 1 })
                 }} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 <input onChange={(e) => {
                     e.preventDefault();
-                    setCheck({ ...check, rating: 2 })
+                    setCheck({ ...check, valoration: 2 })
                 }} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 <input onChange={(e) => {
                     e.preventDefault();
-                    setCheck({ ...check, rating: 3 })
+                    setCheck({ ...check, valoration: 3 })
                 }} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 <input
                     onChange={(e) => {
                         e.preventDefault();
-                        setCheck({ ...check, rating: 4 })
+                        setCheck({ ...check, valoration: 4 })
                     }} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                 <input onChange={(e) => {
                     e.preventDefault();
-                    setCheck({ ...check, rating: 5 })
+                    setCheck({ ...check, valoration: 5 })
                 }} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
             </div> : <></>}
             <div className="form-control w-full max-w-xs">
@@ -76,7 +77,7 @@ const AddBookThird: React.FC<AddBookFirstProps> = ({ func, funcBack, data }) => 
             </div>
             <section className="flex gap-5 mt-5">
                 <button onClick={(event) => funcBack(event)} className="btn btn-outline">Back</button>
-                <button onClick={(event) => func(event,check.links,check.rating,check.checked)} className="btn btn-primary">Publish</button>
+                <button onClick={(event) => func(event,check.links,check.valoration,check.checked)} className="btn btn-primary">Publish</button>
             </section>
         </form >
     );

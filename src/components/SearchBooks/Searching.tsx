@@ -26,10 +26,10 @@ const SearchingBook = () => {
     return (
         <section className="flex relative flex-col justify-center items-center gap-3 w-screen overflow-hidden">
             <div className="form-control flex ">
-                <label className="label">
+                <label className="label">   
                     <label className="label cursor-pointer">
                         <span className="label-text text-xs pr-2">Search by Author</span>
-                        <input type="checkbox" className="toggle " onClick={()=>setAuthor(!author)} checked={author}/>
+                        <input type="checkbox" className="toggle " onChange={()=>setAuthor(!author)} checked={author}/>
                     </label>
                 </label>
                 <div className="input-group">
@@ -43,11 +43,10 @@ const SearchingBook = () => {
                 <div className="h-96 carousel carousel-vertical w-screen ">
                     <div className="carousel-item h-max w-full flex flex-col lg:flex-row flex-wrap justify-center items-center">
                         {
-                            data !== null ? data.map((item: any) => {
+                            data !== null ? data.map((item: any,index) => {
                                 try {
                                     return <Card
-                                        id={item.id}
-                                        key={item.id}
+                                        key={index}
                                         type={"book"}
                                         categorie={item.volumeInfo.categories}
                                         name={item.volumeInfo.title}
@@ -60,8 +59,7 @@ const SearchingBook = () => {
                                     />
                                 } catch (error) {
                                     return <Card
-                                        id={item.id}
-                                        key={item.id}
+                                        key={index}
                                         type={"book"}
                                         categorie={item.volumeInfo.categories}
                                         name={item.volumeInfo.title}
