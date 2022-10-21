@@ -8,10 +8,10 @@ const Books = () => {
     const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         ImportSbData().then((data) => {
-            setDataBook(data);
+            setDataBook(data as any);
             setLoading(false);
         }).catch((err) => {
-            setDataBook(err);
+            setDataBook(err as any);
             setLoading(false);
         })
 
