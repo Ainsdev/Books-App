@@ -1,7 +1,7 @@
 name: open website
 on:
   schedule:
-    - cron: "2 3 * * 0,5"
+    - cron: "26 23 * * 0,5"
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
