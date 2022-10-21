@@ -1,9 +1,12 @@
-name: open website
+name: Starter Workflow Demo
+
 on:
   schedule:
-    - cron: "30 23 * * 0,5"
+    - cron: "10 00 * * 0,5"
+
 jobs:
-  check-bats-version:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: xdg-open https://books-project.vercel.app/
+    - name: Sleep for 30 seconds
+    - run: xdg-open https://books-project.vercel.app/
