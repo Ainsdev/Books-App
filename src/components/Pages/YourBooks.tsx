@@ -11,7 +11,7 @@ import { PersonalCardProps } from '../../helpers/interfaces';
 
 const PersonalBooks = () => {
     const { session, dataSession } = useContext(AppCtx) as { session: boolean, dataSession: User | null };
-    const [dataBook, setDataBook] = useState<any[] | PostgrestError>([]);
+    const [dataBook, setDataBook] = useState<any>([]);
     useEffect(() => {
         if (session) {
             importSbDataById(dataSession?.id as string).then((data) => {
@@ -26,7 +26,7 @@ const PersonalBooks = () => {
         <section>
             {session == true ?
                 <div>
-                    <Stats cant={(dataBook.filter((item) => item.read == true).length) / dataBook.length} />
+                    <Stats cant={(dataBook.filter((item:any) => item.read == true).length) / dataBook.length} />
                     <article className='flex flex-wrap w-full h-full px-10 py-5'>
                         {
                             typeof dataBook == 'object' ?

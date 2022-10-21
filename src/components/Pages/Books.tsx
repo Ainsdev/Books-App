@@ -8,10 +8,10 @@ const Books = () => {
     const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         ImportSbData().then((data) => {
-            setDataBook(data);
+            setDataBook(data as any);
             setLoading(false);
         }).catch((err) => {
-            setDataBook(['error']);
+            setDataBook(err as any);
             setLoading(false);
         })
 
@@ -24,8 +24,8 @@ const Books = () => {
                     <button className="btn loading"></button> :
                     <div className="h-max carousel carousel-vertical w-full">
                         {
-                            dataBook[0] = 'error' ?
-                                <h1>Error on call the data</h1> :
+                            dataBook.code != null ?
+                                <h1>Error: {dataBook.code}</h1> :
                                 <PageSearch data={dataBook} />
                         }
                     </div>
