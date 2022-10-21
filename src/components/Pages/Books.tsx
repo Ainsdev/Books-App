@@ -1,7 +1,6 @@
 import { PostgrestError } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import { ImportSbData } from '../../api/supabase';
-
 import PageSearch from '../SearchBooks/PageSearch';
 
 const Books = () => {
@@ -9,10 +8,10 @@ const Books = () => {
     const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         ImportSbData().then((data) => {
-            setDataBook(data as any);
+            setDataBook(data);
             setLoading(false);
         }).catch((err) => {
-            setDataBook(err as any);
+            setDataBook(['error']);
             setLoading(false);
         })
 
@@ -25,8 +24,8 @@ const Books = () => {
                     <button className="btn loading"></button> :
                     <div className="h-max carousel carousel-vertical w-full">
                         {
-                            dataBook.code != null ?
-                                <h1>Error: {dataBook.code}</h1> :
+                            dataBook[0] = 'error' ?
+                                <h1>Error on call the data</h1> :
                                 <PageSearch data={dataBook} />
                         }
                     </div>
