@@ -1,4 +1,3 @@
-import { PostgrestError } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import { ImportSbData } from '../../api/supabase';
 
