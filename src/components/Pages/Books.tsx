@@ -5,7 +5,7 @@ import { ImportSbData } from '../../api/supabase';
 import PageSearch from '../SearchBooks/PageSearch';
 
 const Books = () => {
-    const [dataBook, setDataBook] = useState<any[] | PostgrestError>([]);
+    const [dataBook, setDataBook] = useState<any>([]);
     const [loading, setLoading] = useState<boolean>(true);
     useEffect(() => {
         ImportSbData().then((data) => {
