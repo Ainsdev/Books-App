@@ -2,11 +2,11 @@ name: Starter Workflow Demo
 
 on:
   schedule:
-    - cron: "10 00 * * 0,5"
+  - cron: "05 14 * * 0,5"
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  my_job:
+    runs-on: windows-2019
     steps:
-    - name: Sleep for 30 seconds
+    - name: Open Web
     - run: xdg-open https://books-project.vercel.app/
