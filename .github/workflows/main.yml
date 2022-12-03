@@ -2,7 +2,7 @@ name: Open project page
 
 on:
   schedule:
-    - cron: '24 12 * * 1,6'
+    - cron: '29 12 * * 1,6'
 
 jobs:
   open-page:
