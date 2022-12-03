@@ -1,0 +1,19 @@
+name: Open project page
+
+on:
+  schedule:
+    - cron: '24 12 * * 1,6'
+
+jobs:
+  open-page:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Open project page
+        uses: your-username/your-action-repo@v1
+        with:
+          page-url: 'https://books-project.vercel.app/'
+
+    
+
+  
