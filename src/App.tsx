@@ -30,7 +30,8 @@ function App() {
         {session == true ? <LogoutButton /> : <LoginButton style='absolute top-0 right-0 sm:mt-10 sm:mr-10 mt-5 mr-5' />}
       </nav>
       <header className='flex flex-col gap-8 justify-center items-center py-12'>
-        <h1 className='text-5xl font-extrabold first-letter:text-accent'>BB Books</h1>
+        <h1 className='text-5xl font-extrabold first-letter:text-accent'>BG Books</h1>
+        <p className='text-md text'> Business & Good Books list </p>
         <SearchingBook />
       </header>
       <section className='w-1/2 h-max mt-5 text-center flex flex-col items-center'>
@@ -38,6 +39,9 @@ function App() {
           <Home />
         </AppCtx.Provider>
       </section>
+      <div className='absolute bottom-0 right-0 w-24 h-36 bg-black text-white hover:scale-110'>
+        <span>Check My Profile </span>
+      </div>
     </main>
   )
 }
