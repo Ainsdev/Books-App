@@ -39,9 +39,7 @@ function App() {
           <Home />
         </AppCtx.Provider>
       </section>
-      <div className='absolute bottom-5 right-5 w-36 h-24 bg-black text-white hover:scale-110 rounded-xl shadow-xl'>
-        <span>Check My Profile </span>
-      </div>
+      
     </main>
   )
 }
